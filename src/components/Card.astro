@@ -1,0 +1,58 @@
+<div
+  class="card relative w-full h-full bg-slate-900 py-3 px-4 rounded-lg flex items-center justify-center"
+>
+  <slot />
+</div>
+
+<style>
+  .back-card {
+    animation: flip-x 0.4s ease-in forwards;
+  }
+  .front-card {
+    animation: flip-x-reverse 0.3s ease-out forwards;
+  }
+
+  @keyframes flip-x-reverse {
+    0% {
+      transform: rotateY(180deg);
+      filter: grayscale(100) blur(5px);
+    }
+    50% {
+      filter: grayscale(100) blur(5px);
+    }
+    100% {
+      transform: rotateY(0);
+      filter: grayscale(0) blur(0);
+    }
+  }
+
+  @keyframes flip-x {
+    0% {
+      transform: rotateY(0deg);
+    }
+    100% {
+      transform: rotateY(180deg);
+      filter: grayscale(100) blur(5px);
+    }
+  }
+</style>
+<script>
+  const containerCards = document.querySelectorAll(".containerCard");
+
+  containerCards.forEach((containerCard) => {
+    const card = containerCard.querySelector(".card");
+    const paragraph = containerCard.querySelector("p");
+
+    containerCard.addEventListener("mouseenter", () => {
+      card.classList.add("back-card");
+      card.classList.remove("front-card");
+      paragraph.classList.remove("hidden");
+    });
+
+    containerCard.addEventListener("mouseleave", () => {
+      card.classList.add("front-card");
+      card.classList.remove("back-card");
+      paragraph.classList.add("hidden");
+    });
+  });
+</script>

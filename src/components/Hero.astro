@@ -1,0 +1,91 @@
+---
+import SectionContainer from "../components/SectionContainer.astro";
+import Copy from "../../public/icons/Copy.astro";
+import Pdf from "../../public/icons/Pdf.astro";
+import Desktop from "../../public/Desktop.astro";
+import Elipse from "../../public/Elipse.astro";
+---
+
+<div>
+  <h1 class="text-5xl md:text-6xl font-bold uppercase">Hola, soy roger</h1>
+  <p class="mt-2">Desarrollador web</p>
+  <p class="text-yellow-200">creando experiencias web impactantes</p>
+  <div class="flex gap-5 mt-5">
+    <div title="Copiar" id="textCopy" class="relative">
+      <button
+        class="relative text-sm flex gap-2 px-4 py-2 rounded-lg bg-[#323253] hover:bg-[#414164]"
+        >huallanca.roger@gmail.com<Copy />
+      </button>
+      <span class="text-sm">Copiado!</span>
+    </div>
+
+    <a
+      href="/cv-roger-huallanca.pdf"
+      target="_blank"
+      class="text-sm flex gap-2 px-4 py-2 rounded-lg bg-[#323253] hover:bg-[#414164]"
+      ><Pdf />CV</a
+    >
+  </div>
+</div>
+
+<div class="relative flex items-center justify-center">
+  <Desktop class="w-52 sm:w-64 relative" />
+  <Elipse
+    class="-z-[1] w-60 sm:w-80 mb-2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 fill-[#3B3B3B]"
+  />
+  <Elipse
+    class="-z-[1] w-60 sm:w-80 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 fill-[#3B3B3B50]"
+  />
+</div>
+
+<style>
+  @keyframes animation-desktop {
+    0% {
+      transform: translateY(50%);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+
+  #textCopy span {
+    background-color: rgb(76, 75, 75);
+    border-radius: w 0.2rem;
+    pointer-events: none;
+    position: absolute;
+    margin-top: 1.5rem;
+    padding: 3px 4px;
+    top: 100%;
+    left: 50%;
+    color: rgba(255, 255, 255, 0.9);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+
+  #textCopy span::before {
+    content: "";
+    top: -12%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-bottom: 10px solid rgb(76, 75, 75);
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+  }
+</style>
+
+<script>
+  const btnCopy = document.querySelector("#textCopy button");
+  const spanCopied = document.querySelector("#textCopy span") as HTMLDivElement;
+
+  function copyText() {
+    navigator.clipboard.writeText(btnCopy.textContent);
+    spanCopied.style.opacity = "1";
+    setTimeout(() => {
+      spanCopied.style.opacity = "0";
+    }, 700);
+  }
+
+  btnCopy.addEventListener("click", copyText);
+</script>

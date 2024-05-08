@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import Technologies from "../components/Technologies.astro";
+import Projects from "../components/Projects.astro";
+---
+
+<Layout title="Portafolio Web - Roger Huallanca Ccahuin">
+  <SectionContainer
+    class="flex mt-5 sm:mt-0 h-screen w-screen flex-col justify-center items-center gap-20 md:gap-32 xl:flex-row xl:justify-between xl:gap-0"
+  >
+    <Hero />
+  </SectionContainer>
+  <SectionContainer>
+    <Technologies />
+  </SectionContainer>
+  <SectionContainer>
+    <Projects />
+  </SectionContainer>
+</Layout>

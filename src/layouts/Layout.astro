@@ -1,0 +1,57 @@
+---
+import Header from "../components/Header.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Portafiolio web de Roger Huallanca Ccahuin, apasionado por el Desarrollo Web"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="relative">
+    <div
+      class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-gray-50 dark:bg-gray-950
+      bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
+      dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+    >
+    </div>
+    <Header />
+    <slot />
+  </body>
+</html>
+<style is:global>
+  :root {
+    color-scheme: light dark;
+    color: white;
+  }
+
+  @font-face {
+    font-family: "Geist";
+    src: url("/src/font/GeistVF.ttf") format("ttf");
+  }
+
+  html {
+    font-family: "Geist", system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overscroll-behavior: none;
+  }
+</style>

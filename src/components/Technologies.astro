@@ -1,0 +1,58 @@
+---
+import Tools from "../../public/icons/Tools.astro";
+import Html from "../../public/icons/Html.astro";
+import Css from "../../public/icons/Css.astro";
+import JavaScript from "../../public/icons/JavaScript.astro";
+import TailwindCss from "../../public/icons/TailwindCss.astro";
+import Git from "../../public/icons/Git.astro";
+import GitHub from "../../public/icons/GitHub.astro";
+import AstroBuild from "../../public/icons/AstroBuild.astro";
+import React from "../../public/icons/React.astro";
+import Figma from "../../public/icons/Figma.astro";
+import NodeJs from "../../public/icons/NodeJs.astro";
+import SQLServer from "../../public/icons/SQLServer.astro";
+import MySQL from "../../public/icons/MySQL.astro";
+import Card from "./Card.astro";
+
+const icons = [
+  { component: Html, message: "HTML5" },
+  { component: Css, message: "CSS3" },
+  { component: JavaScript, message: "JavaScript" },
+  { component: TailwindCss, message: "TailwindCSS" },
+  { component: Git, message: "Git" },
+  { component: GitHub, message: "GitHub" },
+  { component: AstroBuild, message: "Astro" },
+  { component: React, message: "React" },
+  { component: Figma, message: "Figma" },
+  { component: NodeJs, message: "NodeJs" },
+  { component: SQLServer, message: "SQL Server" },
+  { component: MySQL, message: "MySQL" },
+];
+---
+
+<div class="flex flex-col gap-9">
+  <h2 class="flex gap-4"><span><Tools /></span>Tecnologías</h2>
+
+  <div
+    class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-9 mx-auto my-10 sm:my-20 md:my-32"
+  >
+    {
+      icons.map((icons) => (
+        <div class="containerCard flex items-center justify-center">
+          <Card>
+            <icons.component />
+          </Card>
+          <p class="hidden absolute text-md font-semibold animate-fade-in animate-delay-300">
+            {icons.message}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .containerCard p {
+    text-shadow: 3px 3px 3px #000000;
+  }
+</style>
