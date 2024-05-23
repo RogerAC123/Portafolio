@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
 interface Props {
   title: string;
@@ -9,7 +10,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -19,6 +20,7 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="index, follow" />
     <title>{title}</title>
   </head>
   <body class="relative">
@@ -27,8 +29,9 @@ const { title } = Astro.props;
       bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
     >
     </div>
-    <Header />
+    <!-- <Header /> -->
     <slot />
+    <Footer />
   </body>
 </html>
 <style is:global>
@@ -51,5 +54,21 @@ const { title } = Astro.props;
     flex-direction: column;
     min-height: 100vh;
     overscroll-behavior: none;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px; /* Ancho de la barra de desplazamiento */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0f0f0f; /* Color de fondo del track */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #ababab; /* Color del deslizador */
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: #222; /* Color de fondo de la esquina */
   }
 </style>

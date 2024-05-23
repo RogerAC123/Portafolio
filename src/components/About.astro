@@ -1,0 +1,28 @@
+---
+import Person from "../../public/icons/Person.astro";
+import Me from "../../public/Me.astro";
+---
+
+<div class="flex flex-col">
+  <h2 class="flex items-center gap-4 font-semibold text-2xl">
+    <span><Person /></span>Sobre mí
+  </h2>
+  <div
+    class="flex flex-col md:flex-row mt-8 md:mt-0 gap-8 items-center justify-between"
+  >
+    <div class="text-pretty max-w-lg flex-1">
+      <p>
+        Me llamo Roger, tengo 21 años y soy de Lima, Perú . Inicié mi camino en
+        la programación estudiando software y sistemas en el instituto SISE.
+        Actualmente, me enfoco en el desarrollo frontend y estoy ampliando mis
+        habilidades en el backend.
+      </p>
+      <p class="mt-5">
+        Me apasiona brindar el mejor rendimiento web para brindar la mejor
+        experiencia al usuario y estoy emocionado por seguir creciendo en este
+        emocionante campo de la tecnología.
+      </p>
+    </div>
+    <Me class="size-64 sm:size-60 flex-1" />
+  </div>
+</div>

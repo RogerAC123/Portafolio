@@ -4,18 +4,22 @@ import Hero from "../components/Hero.astro";
 import SectionContainer from "../components/SectionContainer.astro";
 import Technologies from "../components/Technologies.astro";
 import Projects from "../components/Projects.astro";
+import About from "../components/About.astro";
 ---
 
-<Layout title="Portafolio Web - Roger Huallanca Ccahuin">
+<Layout title="Portafolio - Roger Huallanca Ccahuin">
   <SectionContainer
     class="flex mt-5 sm:mt-0 h-screen w-screen flex-col justify-center items-center gap-20 md:gap-32 xl:flex-row xl:justify-between xl:gap-0"
   >
     <Hero />
   </SectionContainer>
-  <SectionContainer>
+  <SectionContainer class="flex flex-col">
     <Technologies />
   </SectionContainer>
-  <SectionContainer>
+  <SectionContainer class="my-28">
     <Projects />
+  </SectionContainer>
+  <SectionContainer class="my-20">
+    <About />
   </SectionContainer>
 </Layout>

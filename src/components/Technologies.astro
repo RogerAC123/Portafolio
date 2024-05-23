@@ -12,7 +12,6 @@ import Figma from "../../public/icons/Figma.astro";
 import NodeJs from "../../public/icons/NodeJs.astro";
 import SQLServer from "../../public/icons/SQLServer.astro";
 import MySQL from "../../public/icons/MySQL.astro";
-import Card from "./Card.astro";
 
 const icons = [
   { component: Html, message: "HTML5" },
@@ -30,29 +29,80 @@ const icons = [
 ];
 ---
 
-<div class="flex flex-col">
-  <h2 class="flex gap-4"><span><Tools /></span>Tecnologías</h2>
+<h2 class="flex items-center gap-4 font-semibold text-2xl">
+  <span><Tools /></span>Tecnologías
+</h2>
 
-  <div
-    class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-9 mx-auto my-10 sm:my-20 md:my-32"
-  >
-    {
-      icons.map((icons) => (
-        <div class="containerCard flex items-center justify-center">
-          <Card>
-            <icons.component />
-          </Card>
-          <p class="hidden absolute text-md font-semibold animate-fade-in animate-delay-300">
-            {icons.message}
-          </p>
+<div
+  class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-9 mx-auto my-10 sm:my-20 md:my-32"
+>
+  {
+    icons.map((icons) => (
+      <div class="containerCard flex items-center justify-center">
+        <div class="card relative w-28 h-full bg-slate-900 py-3 px-4 rounded-lg flex items-center justify-center">
+          <icons.component />
         </div>
-      ))
-    }
-  </div>
+        <p class="hidden pointer-events-none absolute text-md font-semibold animate-fade-in animate-delay-300">
+          {icons.message}
+        </p>
+      </div>
+    ))
+  }
 </div>
 
 <style>
   .containerCard p {
     text-shadow: 3px 3px 3px #000000;
   }
+  .back-card {
+    animation: flip- 0.4s ease-in forwards;
+  }
+  .front-card {
+    animation: flip-reverse 0.3s ease-out forwards;
+  }
+
+  @keyframes flip-reverse {
+    0% {
+      transform: rotateY(180deg);
+      filter: grayscale(100) blur(5px);
+    }
+    50% {
+      filter: grayscale(100) blur(5px);
+    }
+    100% {
+      transform: rotateY(0);
+      filter: grayscale(0) blur(0);
+    }
+  }
+
+  @keyframes flip- {
+    0% {
+      transform: rotateY(0deg);
+    }
+    100% {
+      transform: rotateY(180deg);
+      filter: grayscale(100) blur(5px);
+    }
+  }
 </style>
+
+<script>
+  const containerCards = document.querySelectorAll(".containerCard");
+
+  containerCards.forEach((cards) => {
+    const card = cards.querySelector(".card");
+    const paragraph = cards.querySelector("p");
+
+    cards.addEventListener("mouseenter", () => {
+      card.classList.add("back-card");
+      card.classList.remove("front-card");
+      paragraph.classList.remove("hidden");
+    });
+
+    cards.addEventListener("mouseleave", () => {
+      card.classList.add("front-card");
+      card.classList.remove("back-card");
+      paragraph.classList.add("hidden");
+    });
+  });
+</script>
